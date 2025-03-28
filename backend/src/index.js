@@ -17,6 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api", carbonRoutes);
+
 // Avvio del server
 app.listen(PORT, () => {
   console.log(`Server in ascolto su http://localhost:${PORT}`);
