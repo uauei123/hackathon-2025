@@ -7,7 +7,7 @@ async function submitTest(req, res) {
 
         console.log("Dati ricevuti:", answers); // DEBUG: Controlla i dati ricevuti
 
-        // Converti i valori in numeri e gestisci NaN
+        // Converti i valori in numeri e cast a int per i campi necessari
         const streamingHours = parseInt(answers.streaming_hours);
         const socialHours = parseInt(answers.social_hours);
         const emailsSent = parseInt(answers.emails_sent);
@@ -44,8 +44,8 @@ async function submitTest(req, res) {
 
         res.json({ message: "Test salvato!", data: result.rows[0] });
     } catch (error) {
-        console.error("Dati ricevuti con errore:", req.body);
         console.error("Errore nel server:", error);
+        console.error("Dati ricevuti con errore:", req.body);
         res.status(500).json({ error: "Errore nel salvataggio" });
     }
 }

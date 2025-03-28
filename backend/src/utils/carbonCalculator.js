@@ -1,10 +1,10 @@
 function calculateCarbonFootprint(answers) {
   const co2Factors = {
     streaming: 400, // g CO₂ per ora di streaming HD
-    social: 50, // g CO₂ per ora di social browsing
-    email: 4, // g CO₂ per email inviata
-    gaming: 80, // g CO₂ per ora di gaming online
-    cloud: 20 // g CO₂ per ora di utilizzo di servizi cloud
+    social: 50,     // g CO₂ per ora di social browsing
+    email: 4,       // g CO₂ per email inviata
+    gaming: 80,     // g CO₂ per ora di gaming online
+    cloud: 20       // g CO₂ per ora di utilizzo di servizi cloud
   };
 
   const streamingHours = parseInt(answers.streaming_hours);
@@ -21,7 +21,7 @@ function calculateCarbonFootprint(answers) {
       gamingHours * co2Factors.gaming +
       cloudUsage * co2Factors.cloud;
 
-  return parseInt(totalCO2 / 1000); // Convertiamo in Kg CO₂
+  return parseInt(totalCO2 / 1000); // Convertiamo in Kg CO₂ (e arrotondiamo)
 }
 
 module.exports = { calculateCarbonFootprint };
