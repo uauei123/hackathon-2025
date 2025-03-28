@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Behavioral Assessment Test</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        .question-card {
+            display: none;
+        }
+        .question-card.active {
+            display: block;
+        }
+        .progress {
+            height: 10px;
+            margin-bottom: 20px;
+        }
+        .option-btn {
+            white-space: normal;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        .result-section {
+            display: none;
+        }
+        .personality-type {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .trait-bar {
+            height: 25px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="text-center mb-0">Behavioral Assessment</h2>
+                    </div>
+                    
+                    <div class="card-body">
+                        <!-- Progress Bar -->
+                        <div class="progress">
+                            <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        
+                        <!-- Introduction Section -->
+                        <div id="intro-section">
+                            <h3 class="text-center mb-4">Welcome to the Behavioral Assessment</h3>
+                            <p>This assessment will help identify your behavioral tendencies and personality traits.</p>
+                            <p>The test consists of 20 questions with multiple-choice answers. There are no right or wrong answers - please respond based on your natural preferences.</p>
+                            <div class="d-grid gap-2 mt-4">
+                                <button id="start-btn" class="btn btn-primary btn-lg">Start Assessment</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Questions Section -->
+                        <div id="questions-section" style="display: none;">
+                            <form id="behavior-form">
+                                <!-- Question 1 -->
+                                <div class="question-card active" id="question-1">
+                                    <h4>Question 1 of 20</h4>
+                                    <p class="lead">When working on a project, you prefer to:</p>
+                                    <div class="d-grid gap-2">
+                                        <button type="button" class="option-btn btn btn-outline-primary" data-value="A">Follow a clear, structured plan</button>
+                                        <button type="button" class="option-btn btn btn-outline-primary" data-value="B">Explore creative approaches and ideas</button>
+                                        <button type="button" class="option-btn btn btn-outline-primary" data-value="C">Focus on the human and emotional aspects</button>
+                                        <button type="button" class="option-btn btn btn-outline-primary" data-value="D">Analyze data and facts thoroughly</button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Question 2 -->
+                                <div class="question-card" id="question-2">
+                                    <h4>Question 2 of 20</h4>
+                                    <p class="lead">In social situations, you typically:</p>
+                                    <div class="d-grid gap-2">
+                                        <button type="button" class="option-btn btn btn-outline-primary" data-value="A">Take charge and direct the conversation</button>
+                                        <button type="button" class="option-btn btn btn-outline-primary" data-value="B">Enjoy meeting new people and socializing</button>
+                                        <button type="button" class="option-btn btn btn-outline-primary" data-value="C">Prefer listening to others rather than speaking</button>
+                                        <button type="button" class="option-btn btn btn-outline-primary" data-value="D">Analyze the group dynamics objectively</button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Add more questions here (3-20) -->
+                                <!-- For brevity, I've included just 2 questions, but in a real app you would have 20 -->
+                                
+                                <!-- Navigation Buttons -->
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button type="button" id="prev-btn" class="btn btn-secondary" disabled>Previous</button>
+                                    <button type="button" id="next-btn" class="btn btn-primary">Next</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- Results Section -->
+                        <div id="result-section" class="result-section text-center">
+                            <h3 class="mb-4">Your Behavioral Assessment Results</h3>
+                            <div class="personality-type" id="personality-type">Explorer-Analyst</div>
+                            <p class="mb-4" id="result-description">You have a balanced approach that combines creativity with analytical thinking.</p>
+                            
+                            <h4 class="mt-5 mb-3">Your Traits</h4>
+                            <div class="trait-container">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span>Introversion</span>
+                                    <span id="introversion-value">60%</span>
+                                </div>
+                                <div class="progress trait-bar">
+                                    <div id="introversion-bar" class="progress-bar bg-info" role="progressbar" style="width: 60%"></div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span>Analytical</span>
+                                    <span id="analytical-value">75%</span>
+                                </div>
+                                <div class="progress trait-bar">
+                                    <div id="analytical-bar" class="progress-bar bg-success" role="progressbar" style="width: 75%"></div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span>Emotional</span>
+                                    <span id="emotional-value">45%</span>
+                                </div>
+                                <div class="progress trait-bar">
+                                    <div id="emotional-bar" class="progress-bar bg-warning" role="progressbar" style="width: 45%"></div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span>Structured</span>
+                                    <span id="structured-value">55%</span>
+                                </div>
+                                <div class="progress trait-bar">
+                                    <div id="structured-bar" class="progress-bar bg-danger" role="progressbar" style="width: 55%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-grid gap-2 mt-5">
+                                <button id="retake-btn" class="btn btn-outline-primary">Retake Test</button>
+                                <button id="download-btn" class="btn btn-primary">Download Results</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const introSection = document.getElementById('intro-section');
+            const questionsSection = document.getElementById('questions-section');
+            const resultSection = document.getElementById('result-section');
+            const startBtn = document.getElementById('start-btn');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const retakeBtn = document.getElementById('retake-btn');
+            const downloadBtn = document.getElementById('download-btn');
+            const progressBar = document.getElementById('progress-bar');
+            
+            // Test variables
+            let currentQuestion = 1;
+            const totalQuestions = 2; // Should be 20 in real implementation
+            const answers = {};
+            
+            // Start the test
+            startBtn.addEventListener('click', function() {
+                introSection.style.display = 'none';
+                questionsSection.style.display = 'block';
+                updateProgressBar();
+            });
+            
+            // Next question
+            nextBtn.addEventListener('click', function() {
+                if (currentQuestion < totalQuestions) {
+                    document.getElementById(`question-${currentQuestion}`).classList.remove('active');
+                    currentQuestion++;
+                    document.getElementById(`question-${currentQuestion}`).classList.add('active');
+                    updateNavigationButtons();
+                    updateProgressBar();
+                    
+                    // If this is the last question, change button text
+                    if (currentQuestion === totalQuestions) {
+                        nextBtn.textContent = 'Submit';
+                    }
+                } else {
+                    // Submit the test
+                    calculateResults();
+                    questionsSection.style.display = 'none';
+                    resultSection.style.display = 'block';
+                }
+            });
+            
+            // Previous question
+            prevBtn.addEventListener('click', function() {
+                if (currentQuestion > 1) {
+                    document.getElementById(`question-${currentQuestion}`).classList.remove('active');
+                    currentQuestion--;
+                    document.getElementById(`question-${currentQuestion}`).classList.add('active');
+                    updateNavigationButtons();
+                    updateProgressBar();
+                    
+                    // Ensure next button says "Next" if we go back from last question
+                    nextBtn.textContent = 'Next';
+                }
+            });
+            
+            // Option selection
+            document.querySelectorAll('.option-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all options in this question
+                    const questionId = this.closest('.question-card').id;
+                    document.querySelectorAll(`#${questionId} .option-btn`).forEach(btn => {
+                        btn.classList.remove('btn-primary');
+                        btn.classList.add('btn-outline-primary');
+                    });
+                    
+                    // Add active class to selected option
+                    this.classList.remove('btn-outline-primary');
+                    this.classList.add('btn-primary');
+                    
+                    // Store answer
+                    answers[questionId] = this.getAttribute('data-value');
+                });
+            });
+            
+            // Retake test
+            retakeBtn.addEventListener('click', function() {
+                // Reset test
+                currentQuestion = 1;
+                for (let key in answers) {
+                    delete answers[key];
+                }
+                
+                // Hide result, show questions
+                resultSection.style.display = 'none';
+                questionsSection.style.display = 'block';
+                
+                // Reset to first question
+                document.querySelectorAll('.question-card').forEach(card => {
+                    card.classList.remove('active');
+                });
+                document.getElementById('question-1').classList.add('active');
+                
+                // Reset options
+                document.querySelectorAll('.option-btn').forEach(btn => {
+                    btn.classList.remove('btn-primary');
+                    btn.classList.add('btn-outline-primary');
+                });
+                
+                // Reset navigation buttons
+                updateNavigationButtons();
+                updateProgressBar();
+                nextBtn.textContent = 'Next';
+            });
+            
+            // Download results
+            downloadBtn.addEventListener('click', function() {
+                alert('Results downloaded! (This would generate a PDF in a real application)');
+            });
+            
+            // Update navigation buttons
+            function updateNavigationButtons() {
+                prevBtn.disabled = currentQuestion === 1;
+            }
+            
+            // Update progress bar
+            function updateProgressBar() {
+                const progress = (currentQuestion / totalQuestions) * 100;
+                progressBar.style.width = `${progress}%`;
+                progressBar.setAttribute('aria-valuenow', progress);
+            }
+            
+            // Calculate results (simplified for demo)
+            function calculateResults() {
+                // In a real app, this would analyze the answers and calculate scores
+                // For demo purposes, we're using random values
+                
+                // Personality type
+                const types = ['Analyst-Thinker', 'Explorer-Creator', 'Supporter-Helper', 'Leader-Director'];
+                const randomType = types[Math.floor(Math.random() * types.length)];
+                document.getElementById('personality-type').textContent = randomType;
+                
+                // Description based on type
+                const descriptions = {
+                    'Analyst-Thinker': 'You have a logical, analytical approach to problems and prefer working with facts and data.',
+                    'Explorer-Creator': 'You are innovative and imaginative, always looking for new possibilities and creative solutions.',
+                    'Supporter-Helper': 'You are empathetic and caring, focused on building relationships and helping others.',
+                    'Leader-Director': 'You are decisive and action-oriented, comfortable taking charge and making tough decisions.'
+                };
+                document.getElementById('result-description').textContent = descriptions[randomType];
+                
+                // Trait scores (random for demo)
+                const introversion = Math.floor(Math.random() * 100);
+                const analytical = Math.floor(Math.random() * 100);
+                const emotional = Math.floor(Math.random() * 100);
+                const structured = Math.floor(Math.random() * 100);
+                
+                document.getElementById('introversion-value').textContent = `${introversion}%`;
+                document.getElementById('introversion-bar').style.width = `${introversion}%`;
+                
+                document.getElementById('analytical-value').textContent = `${analytical}%`;
+                document.getElementById('analytical-bar').style.width = `${analytical}%`;
+                
+                document.getElementById('emotional-value').textContent = `${emotional}%`;
+                document.getElementById('emotional-bar').style.width = `${emotional}%`;
+                
+                document.getElementById('structured-value').textContent = `${structured}%`;
+                document.getElementById('structured-bar').style.width = `${structured}%`;
+            }
+        });
+    </script>
+</body>
+</html>
