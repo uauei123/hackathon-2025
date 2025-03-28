@@ -1,0 +1,24 @@
+/* Migliora leggibilità su schermi piccoli */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Hero Section - Regola la dimensione del testo */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+    header p {
+        font-size: 1rem;
+    }
+}
+
+/* Navbar - Centra il menu su dispositivi piccoli */
+.navbar-nav {
+    text-align: center;
+}
+
+/* Card - Aggiunge spazio tra le card su mobile */
+.card {
+    text-align: center;
+}
