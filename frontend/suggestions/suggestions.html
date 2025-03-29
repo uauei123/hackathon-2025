@@ -3,237 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suggerimenti Carbon Footprint</title>
+    <title>Carbon Footprint Suggestions</title>
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS for styling the layout -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Google Font Poppins -->
+    <!-- Google Font Poppins for custom typography -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/style/suggestionStyle.css"> <!-- Custom CSS for suggestion page -->
 
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #b3f080, #58ac0f); /* Gradiente verde più scuro da sinistra a destra */
-            font-size: 1.1rem; /* Aumento della dimensione del testo di default */
-            color: white;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Hero Section con il Titolo */
-        .hero {
-            height: 35vh; /* Impostiamo l'altezza della sezione del titolo */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            position: relative; /* Necessario per posizionare il logo */
-        }
-
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px; /* Spazio tra il logo e il titolo */
-        }
-
-        /* Logo posizionato a sinistra */
-        .hero .logo {
-            width: 120px; /* Dimensione del logo */
-            height: auto;
-        }
-
-        .title-container h1 {
-            font-size: 3rem; /* Grandezza del titolo */
-            font-weight: 500; /* Peso del font ridotto */
-            margin: 0; /* Rimuove margini extra */
-            
-            text-align: center; /* Centra il testo */
-        }
-
-        /* Sezione di contenuto con flexbox */
-        .content-section {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px; /* Spazio uniforme */
-            margin-bottom: 40px; /* Spazio tra le sezioni */
-        }
-
-        /* Testo della sezione con effetto blur */
-        .content-text {
-            flex: 1;
-            padding: 20px;
-            font-size: 1.3rem; /* Aumento della grandezza del testo */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            backdrop-filter: blur(5px); /* Aggiunge l'effetto blur sullo sfondo */
-            -webkit-backdrop-filter: blur(5px); /* Supporto Safari */
-            color: white; /* Colore del testo bianco */
-            border-radius: 15px; /* Bordo arrotondato per i div con il testo */
-            background: rgba(0, 0, 0, 0.3); /* Aggiunge una leggera trasparenza sullo sfondo del testo */
-            margin: 10px; /* Spazio uniforme intorno al testo */
-        }
-
-        .content-text h3 {
-            backdrop-filter: none; /* Disabilita il blur per il titolo */
-            -webkit-backdrop-filter: none; /* Supporto Safari */
-            font-size: 2rem;
-            margin-bottom: 15px;
-            color: #fff;
-        }
-
-        .content-image {
-            flex: 1;
-            max-width: 500px;
-            margin: 20px;
-            border-radius: 10px;
-            backdrop-filter: blur(5px); /* Aggiunge il blur anche sulle immagini */
-            -webkit-backdrop-filter: blur(5px); /* Supporto Safari */
-        }
-
-        /* Titolo della sezione */
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-top: 60px;
-            margin-bottom: 60px;
-            font-weight: bold;
-            color: white;
-        }
-
-        /* Responsività per schermi più piccoli */
-        @media (max-width: 768px) {
-            .title-container h1 {
-                font-size: 2.5rem; /* Riduci la dimensione del titolo su schermi piccoli */
-            }
-
-            .content-section {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .content-text {
-                text-align: left; /* Allinea il testo a sinistra su mobile */
-                padding: 15px;
-            }
-
-            .content-image {
-                max-width: 100%;
-                margin-bottom: 20px;
-            }
-
-            .content-text h3 {
-                font-size: 1.8rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .title-container h1 {
-                font-size: 2rem; /* Riduci ulteriormente il titolo */
-            }
-
-            .content-section {
-                padding: 20px 10px;
-                margin-bottom: 20px; /* Riduci lo spazio tra le sezioni */
-            }
-
-            .content-text {
-                font-size: 1rem; /* Riduci la dimensione del testo */
-                padding: 10px;
-            }
-
-            .content-image {
-                margin: 10px 0;
-            }
-        }
-
-        /* Sposta l'immagine nella quinta sezione leggermente a destra */
-        .content-section:nth-child(5) .content-image {
-            margin-left: auto; /* Sposta l'immagine verso destra */
-            margin-right: auto; /* Mantiene l'immagine centrata */
-            display: block; /* Assicura che l'immagine sia trattata come blocco */
-        }
-    </style>
 </head>
 <body>
 
-    <!-- Titolo che è parte dello sfondo -->
+    <!-- Hero section with a title that is part of the background -->
     <section class="hero">
         <div class="title-container">
             <h1>
-                Suggerimenti per Ridurre la Carbon Footprint
+                Suggestions for Reducing Carbon Footprint
             </h1>
         </div>
     </section>
 
-    <!-- Prima Sezione con Testo a Sinistra e Immagine a Destra -->
+    <!-- First Section: Ecobyte Datacounter Extension with Text on the Left and Image on the Right -->
+    <section class="content-section">
+        <div class="content-text">
+            <h3>Ecobyte Datacounter Extension</h3>
+            <p>Download our browser extension that automatically tracks carbon dioxide consumption while browsing the internet.</p>
+        </div>
+        <div class="content-image">
+            <a href="../assets/estensione.crx" target="_blank">
+                <img src="../images/logo.jpg" alt="Ecobyte Datacounter Extension Image" class="img-fluid rounded">
+            </a>
+        </div>
+    </section>
+
+    <!-- Second Section: Ecosia Search Engine with Text on the Left and Image on the Right -->
     <section class="content-section row">
         <div class="content-text col-md-6 col-12">
-            <h3>Un motore alternativo</h3>
-            <p>Ecosia è un motore di ricerca che pianta alberi grazie ai ricavi delle ricerche. È ecologico, trasparente e utilizza energie rinnovabili.</p>
+            <h3>Alternative Search Engine</h3>
+            <p>Ecosia is a search engine that plants trees with the revenue generated from searches. It is ecological, transparent, and uses renewable energy.</p>
         </div>
         <div class="content-image col-md-6 col-12">
             <a href="https://www.ecosia.org/?c=it" target="_blank">
-                <img src="../images/ecosia.jpg" alt="Logo Ecosia" class="img-fluid rounded">
+                <img src="../images/ecosia.jpg" alt="Ecosia Logo" class="img-fluid rounded">
             </a>
         </div>
     </section>
 
-    <!-- Seconda Sezione con Testo a Destra e Immagine a Sinistra -->
+    <!-- Third Section: Treedom Platform with Text on the Right and Image on the Left -->
     <section class="content-section">
         <div class="content-image">
             <a href="https://www.treedom.net/" target="_blank">
-                <img src="../images/treedom.jpg" alt="Logo treedom" class="img-fluid rounded">
+                <img src="../images/treedom.jpg" alt="Treedom Logo" class="img-fluid rounded">
             </a>
         </div>
         <div class="content-text">
-            <h3>Regala un albero</h3>
-            <p>Treedom è una piattaforma che consente di piantare alberi per combattere il cambiamento climatico e supportare le comunità locali. Ogni albero piantato è tracciato online.</p>
+            <h3>Gift a Tree</h3>
+            <p>Treedom is a platform that allows you to plant trees to combat climate change and support local communities. Every tree planted is tracked online.</p>
         </div>
     </section>
 
-    <!-- Terza Sezione con Testo a Sinistra e Immagine a Destra -->
+    <!-- Fourth Section: Green Thumb with Text on the Left and Image on the Right -->
     <section class="content-section row">
         <div class="content-text col-md-6 col-12">
-            <h3>Pollice verde</h3>
-            <p>Se hai un giardino, puoi piantare alberi e piante per compensare le emissioni di CO2. Puoi anche piantare piante in casa per migliorare la qualità dell'aria.</p>
+            <h3>Green Thumb</h3>
+            <p>If you have a garden, you can plant trees and plants to offset CO2 emissions. You can also plant indoor plants to improve air quality.</p>
         </div>
         <div class="content-image col-md-6 col-12">
-                <img src="../images/pollice.jpg" alt="piantina piantata" class="img-fluid rounded">
+                <img src="../images/pollice.jpg" alt="Planted Plant" class="img-fluid rounded">
         </div>
     </section>
 
-    <!-- Quarta Sezione con Testo a Destra e Immagine a Sinistra -->
+    <!-- Fifth Section: Email Maintenance with Text on the Right and Image on the Left -->
     <section class="content-section">
         <div class="content-image">
-            <img src="../images/cleaner.jpg" alt="Immagine pulizia mail" class="img-fluid rounded">
+            <img src="../images/cleaner.jpg" alt="Email Cleaning Image" class="img-fluid rounded">
         </div>
         <div class="content-text">
-            <h3>Manutenzione periodica</h3>
-            <p>Eseguire opere di pulizia periodica alla casella di posta per eliminare mail di spam e vecchie mail per ridurre il consumo di CO2.</p>
+            <h3>Regular Maintenance</h3>
+            <p>Perform periodic cleaning of your email inbox to eliminate spam and old emails, reducing CO2 consumption.</p>
         </div>
     </section>
 
-    <!-- Quinta Sezione con Testo a Destra e Immagine a Sinistra -->
-    <section class="content-section">
-        <div class="content-text">
-            <h3>Estensione Ecobyte Datacounter</h3>
-            <p>Scaricare la nostra estensione per il browser che permette di rilevare in automatico il consumo di anidride carbonica quando si naviga in internet.</p>
-        </div>
-        <div class="content-image">
-            <a href="../estensione/estensione.crx" target="_blank">
-                <img src="../images/logo.jpg" alt="Immagine estensione Ecobyte Datacounter" class="img-fluid rounded">
-            </a>
-        </div>
-    </section>
-
-    <!-- Bootstrap JavaScript -->
+    <!-- Bootstrap JavaScript for interactive elements -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Calcolatore CO₂</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/frontend/style/questionStyle.css"> <!-- Importa il tuo CSS -->
+    <link rel="stylesheet" href="/frontend/style/questionStyle.css"> 
 
 </head>
 
@@ -14,8 +14,8 @@
 
     <div class="card shadow p-4 glass-card mt-5 mx-auto" style="max-width: 800px;">
         <div class="container mt-5">
-            <h2 class="text-center">Calcolatore di Impatto Ambientale</h2>
-            <p class="text-center">Scopri il tuo impatto in termini di CO₂ e pianeti necessari</p>
+            <h2 class="text-center">Digital footprint calculator</h2>
+            <p class="text-center">Find out your impact in terms of CO₂ and planets needed. Answers must be approximate! </p>
             <div class="progress mb-4">
                 <div class="progress-bar" role="progressbar" style="width: 0%"></div>
             </div>
@@ -30,9 +30,9 @@
 
                 <div class="question-container" data-question="2">
                     <div class="mb-3">
-                        <label class="form-label">Quante ore passi in streaming al giorno?</label>
+                        <label class="form-label">How many hours do you spend streaming per day?</label>
                         <input type="range" class="form-range" min="0" max="6" step="1" id="streaming_hours" required>
-                        <div class="range-value">0 ore</div>
+                        <div class="range-value">3 hours</div>
                         <div class="range-labels">
                             <span>0</span>
                             <span>1</span>
@@ -47,9 +47,9 @@
 
                 <div class="question-container" data-question="3">
                     <div class="mb-3">
-                        <label class="form-label">Quanto tempo trascorri sui social media?</label>
+                        <label class="form-label">How much time do you spend on social media?</label>
                         <input type="range" class="form-range" min="0" max="6" step="1" id="social_hours" required>
-                        <div class="range-value">0 ore</div>
+                        <div class="range-value">3 hours</div>
                         <div class="range-labels">
                             <span>0</span>
                             <span>1</span>
@@ -64,9 +64,9 @@
 
                 <div class="question-container" data-question="4">
                     <div class="mb-3">
-                        <label class="form-label">Quanto tempo trascorri ascoltando musica in streaming?</label>
+                        <label class="form-label">How much time do you spend listening to streaming music?</label>
                         <input type="range" class="form-range" min="0" max="6" step="1" id="music_hours" required>
-                        <div class="range-value">0 ore</div>
+                        <div class="range-value">3 hours</div>
                         <div class="range-labels">
                             <span>0</span>
                             <span>1</span>
@@ -81,9 +81,9 @@
 
                 <div class="question-container" data-question="5">
                     <div class="mb-3">
-                        <label class="form-label">Quante email invii e ricevi al giorno?</label>
+                        <label class="form-label">How many emails do you send and receive per day?</label>
                         <input type="range" class="form-range" min="0" max="50" step="10" id="emails_sent" required>
-                        <div class="range-value">0 email</div>
+                        <div class="range-value">30 emails</div>
                         <div class="range-labels">
                             <span>0</span>
                             <span>10</span>
@@ -97,9 +97,9 @@
 
                 <div class="question-container" data-question="6">
                     <div class="mb-3">
-                        <label class="form-label">Quante ore giochi ai videogiochi online?</label>
+                        <label class="form-label">How many hours do you play online video games?</label>
                         <input type="range" class="form-range" min="0" max="6" step="1" id="gaming_hours" required>
-                        <div class="range-value">0 ore</div>
+                        <div class="range-value">3 hours</div>
                         <div class="range-labels">
                             <span>0</span>
                             <span>1</span>
@@ -114,9 +114,9 @@
 
                 <div class="question-container" data-question="7">
                     <div class="mb-3">
-                        <label class="form-label">Quanto spazio cloud utilizzi? (GB)</label>
+                        <label class="form-label">How much cloud space do you use? (GB)</label>
                         <input type="range" class="form-range" min="0" max="50" step="10" id="cloud_usage" required>
-                        <div class="range-value">0 GB</div>
+                        <div class="range-value">30 GB</div>
                         <div class="range-labels">
                             <span>0</span>
                             <span>10</span>
@@ -130,9 +130,9 @@
 
                 <div class="question-container" data-question="8">
                     <div class="mb-3">
-                        <label class="form-label">Quante ore passi in videochiamata?</label>
+                        <label class="form-label">How many hours do you spend on video call?</label>
                         <input type="range" class="form-range" min="0" max="6" step="1" id="call_hours" required>
-                        <div class="range-value">0 ore</div>
+                        <div class="range-value">2 hours</div>
                         <div class="range-labels">
                             <span>0</span>
                             <span>1</span>
@@ -149,9 +149,8 @@
                 <div class="d-flex justify-content-between mt-4">
                     <button type="button" class="btn btn-secondary" id="prevBtn"
                         style="display: none;">Indietro</button>
-                    <button type="button" class="btn-custom" id="nextBtn">Avanti</button>
-                    <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">Calcola
-                        Impatto</button>
+                    <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">Calulate your impact</button>
+                    <button type="button" class="btn-custom ms-auto" id="nextBtn">Next</button>
                 </div>
             </form>
 
@@ -259,42 +258,82 @@
 
                 const result = await response.json();
                 if (response.ok) {
-                    // Hides the form and displays the result
+                    // Function to calculate the overshoot day based on the number of Earths needed
+                    function calculateOvershootDay(earthsNeeded) {
+                        const daysInYear = 365; // Number of days in a year
+                        const overshootDay = Math.floor(daysInYear / earthsNeeded); // Calculate the overshoot day
+                        const startDate = new Date(2025, 0, 1); // Start date is January 1, 2025
+                        startDate.setDate(startDate.getDate() + overshootDay); // Add the overshoot day to the start date
+                        return startDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }); // Format the date
+                    }
+
+                    // Hide the form and display the result
                     document.getElementById("carbonForm").style.display = "none";
 
+                    // Display the result in the "result" container
                     document.getElementById("result").innerHTML = `
-                        <div class="result-container text-center">
-                            <h3 class="mb-4">Your Digital Impact</h3>
-                            
-                            <div class="row justify-content-center mb-4">
-                                <div class="col-md-6">
-                                    <div class="glass-card mb-3 p-4">
-                                        <img src="https://cdn-icons-png.flaticon.com/512/1835/1835590.png" 
-                                             alt="CO2" class="mb-3" style="width: 64px;">
-                                        <h4 class="mb-3">CO₂ Emissions</h4>
-                                        <h2 class="display-4 mb-0">${result.data.total_co2} kg</h2>
-                                        <p class="text-muted">per year</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-6">
-                                    <div class="glass-card mb-3 p-4">
-                                        <img src="https://cdn-icons-png.flaticon.com/512/616/616616.png" 
-                                             alt="Planets" class="mb-3" style="width: 64px;">
-                                        <h4 class="mb-3">Planets Needed</h4>
-                                        <h2 class="display-4 mb-0">${result.earthsNeeded}</h2>
-                                        <p class="text-muted">if everyone lived like you</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <button class="btn-custom mt-3" onclick="window.location.href='../suggestions/'">
-                                Suggestions
-                            </button>
-                        </div>`;
+    <div class="result-container text-center">
+        <h3 class="mb-4">Your Digital Impact</h3>
+        
+        <!-- Display CO₂ Emissions -->
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-6 ">
+                <div class="glass-card mb-3 p-4">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1835/1835590.png" 
+                         alt="CO2" class="mb-3" style="width: 64px;">
+                    <h4 class="mb-3">CO₂ Emissions</h4>
+                    <h2 class="display-4 mb-0">${result.data.total_co2} kg</h2>
+                    <p class="text-muted">per year</p>
+                </div>
+            </div>
+            
+            <!-- Display Planets Needed -->
+            <div class="col-md-6 ">
+                <div class="glass-card mb-3 p-4">
+                    <img src="https://cdn-icons-png.flaticon.com/512/616/616616.png" 
+                         alt="Planets" class="mb-3" style="width: 64px;">
+                    <h4 class="mb-3">Planets Needed</h4>
+                    <h2 class="display-4 mb-0">${result.earthsNeeded}</h2>
+                    <p class="text-muted">if everyone lived like you</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Display Equivalent in Car Emissions -->
+        <div class="row justify-content-center"> 
+            <div class="col-md-6">
+                <div class="glass-card mb-3 p-4">
+                    <img src="https://cdn-icons-png.flaticon.com/512/616/616616.png" 
+                         alt="Car" class="mb-3" style="width: 64px;">
+                    <h4 class="mb-3">Equivalent in Car Emissions</h4>
+                    <h2 class="display-4 mb-0">${(result.data.total_co2 / 0.120).toFixed(1)} km</h2>
+                    <p class="text-muted">driven with a gasoline car</p>
+                    <!-- Display equivalent distance between Rome and Milan -->
+                    <p class="text-muted">That's like traveling from Rome to Milan <strong>${((result.data.total_co2 / 0.120) / 570).toFixed(1)}</strong> times!</p>
+                </div>
+            </div>
+            
+            <!-- Display Overshoot Day -->
+            <div class="col-md-6 ">
+                <div class="glass-card mb-3 p-4">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3039/3039433.png" 
+                         alt="Calendar" class="mb-3" style="width: 64px;">
+                    <h4 class="mb-3">Your Overshoot Day</h4>
+                    <h2 class="display-4 mb-0">${calculateOvershootDay(result.earthsNeeded)}</h2>
+                    <p class="text-muted">the day you'd consume Earth's yearly resources</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Button to go to suggestions page -->
+        <button class="btn-custom mt-3" onclick="window.location.href='../suggestions/suggestions.html'">
+            Suggestions
+        </button>
+    </div>`;
                 } else {
                     throw new Error(result.error || "Error during calculation");
                 }
+
             } catch (error) {
                 // Displays an error message if the request fails
                 document.getElementById("result").innerHTML = `

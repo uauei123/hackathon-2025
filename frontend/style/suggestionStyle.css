@@ -1,0 +1,147 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #b3f080, #58ac0f); /* Gradiente verde più scuro da sinistra a destra */
+    font-size: 1.1rem; /* Aumento della dimensione del testo di default */
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* Hero Section con il Titolo */
+.hero {
+    height: 35vh; /* Impostiamo l'altezza della sezione del titolo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative; /* Necessario per posizionare il logo */
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* Spazio tra il logo e il titolo */
+}
+
+/* Logo posizionato a sinistra */
+.hero .logo {
+    width: 120px; /* Dimensione del logo */
+    height: auto;
+}
+
+.title-container h1 {
+    font-size: 3rem; /* Grandezza del titolo */
+    font-weight: 500; /* Peso del font ridotto */
+    margin: 0; /* Rimuove margini extra */
+    
+    text-align: center; /* Centra il testo */
+}
+
+/* Sezione di contenuto con flexbox */
+.content-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px; /* Spazio uniforme */
+    margin-bottom: 40px; /* Spazio tra le sezioni */
+}
+
+/* Testo della sezione con effetto blur */
+.content-text {
+    flex: 1;
+    padding: 20px;
+    font-size: 1.3rem; /* Aumento della grandezza del testo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    backdrop-filter: blur(5px); /* Aggiunge l'effetto blur sullo sfondo */
+    -webkit-backdrop-filter: blur(5px); /* Supporto Safari */
+    color: white; /* Colore del testo bianco */
+    border-radius: 15px; /* Bordo arrotondato per i div con il testo */
+    background: rgba(0, 0, 0, 0.3); /* Aggiunge una leggera trasparenza sullo sfondo del testo */
+    margin: 10px; /* Spazio uniforme intorno al testo */
+}
+
+.content-text h3 {
+    backdrop-filter: none; /* Disabilita il blur per il titolo */
+    -webkit-backdrop-filter: none; /* Supporto Safari */
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.content-image {
+    flex: 1;
+    max-width: 500px;
+    margin: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px); /* Aggiunge il blur anche sulle immagini */
+    -webkit-backdrop-filter: blur(5px); /* Supporto Safari */
+}
+
+/* Titolo della sezione */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Responsività per schermi più piccoli */
+@media (max-width: 768px) {
+    .title-container h1 {
+        font-size: 2.5rem; /* Riduci la dimensione del titolo su schermi piccoli */
+    }
+
+    .content-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .content-text {
+        text-align: left; /* Allinea il testo a sinistra su mobile */
+        padding: 15px;
+    }
+
+    .content-image {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .content-text h3 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .title-container h1 {
+        font-size: 2rem; /* Riduci ulteriormente il titolo */
+    }
+
+    .content-section {
+        padding: 20px 10px;
+        margin-bottom: 20px; /* Riduci lo spazio tra le sezioni */
+    }
+
+    .content-text {
+        font-size: 1rem; /* Riduci la dimensione del testo */
+        padding: 10px;
+    }
+
+    .content-image {
+        margin: 10px 0;
+    }
+}
+
+/* Sposta l'immagine nella quinta sezione leggermente a destra */
+.content-section:nth-child(5) .content-image {
+    margin-left: auto; /* Sposta l'immagine verso destra */
+    margin-right: auto; /* Mantiene l'immagine centrata */
+    display: block; /* Assicura che l'immagine sia trattata come blocco */
+}
