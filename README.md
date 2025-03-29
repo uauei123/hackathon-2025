@@ -10,11 +10,12 @@ This project provides an application aimed at helping users reduce their carbon 
 3. **Tree Planting Initiatives**: The application encourages users to support tree planting initiatives through services like Ecosia and Treedom.
 
 ## Project Structure
+```
 carbon-footprint-suggestions/
 ├── backend/            # Contains the backend server logic and API.
 ├── frontend/           # Contains the frontend UI of the application.
 └── README.md           # This file.
-
+```
 ## Technologies Used
 
 - **Frontend**: HTML, CSS (Bootstrap), JavaScript.

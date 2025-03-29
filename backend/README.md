@@ -16,7 +16,7 @@ This repository contains the backend for the Hackathon 2025 application, develop
 - **Git**: Version control system.
 
 ## Project Structure
-
+```
 backend/
 ├── node_modules/
 ├── src/
@@ -33,7 +33,7 @@ backend/
 ├── docker-compose.yml
 ├── package.json
 ├── README.md
-
+```
 - `node_modules/`: Contains project dependencies.
 - `src/`: Contains application source code.
 - `routes/`: Defines API routes.
