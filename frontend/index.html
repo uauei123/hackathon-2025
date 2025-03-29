@@ -6,6 +6,23 @@
     <title>Calcolatore CO₂</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
         .question-container {
             display: none;
         }
@@ -24,18 +41,30 @@
             justify-content: space-between;
             margin-top: 5px;
             font-size: 0.875rem;
-            color: #6c757d;
+            color: white;
         }
 
         .range-value {
             text-align: center;
             font-weight: bold;
             margin-top: 10px;
-            color: #0d6efd;
+            color: white;
         }
 
         .form-range::-webkit-slider-thumb {
             cursor: pointer;
+        }
+
+        .card {
+            background: transparent;
+        }
+
+        h2, p, label {
+            color: white;
+        }
+
+        .form-label {
+            font-weight: 500;
         }
     </style>
 </head>
@@ -44,7 +73,7 @@
         <h2 class="text-center">Calcolatore di Impatto Ambientale</h2>
         <p class="text-center">Scopri il tuo impatto in termini di CO₂ e pianeti necessari</p>
         
-        <div class="card shadow p-4">
+        <div class="card shadow p-4 glass-card">
             <div class="progress mb-4">
                 <div class="progress-bar" role="progressbar" style="width: 0%"></div>
             </div>
