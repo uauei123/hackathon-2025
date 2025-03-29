@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "Data Usage Counter",
+  "version": "1.0",
+  "description": "Conta i MB di dati utilizzati da Chrome",
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "storage",
+    "tabs",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_popup": "popup.html"
+  }
+}
