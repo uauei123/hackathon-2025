@@ -15,7 +15,7 @@ async function submitTest(req, res) {
         const cloudUsage = parseInt(answers.cloud_usage);
 
         // Calcola la CO2, assicurandoti che il valore sia un numero valido
-        const totalCO2 = calculateCarbonFootprint({
+        const { totalCO2, earthsNeeded } = calculateCarbonFootprint({
             streaming_hours: streamingHours,
             social_hours: socialHours,
             emails_sent: emailsSent,
@@ -42,7 +42,7 @@ async function submitTest(req, res) {
             ]
         );
 
-        res.json({ message: "Test salvato!", data: result.rows[0] });
+        res.json({ message: "Test salvato!", data: result.rows[0], earthsNeeded});
     } catch (error) {
         console.error("Errore nel server:", error);
         console.error("Dati ricevuti con errore:", req.body);
