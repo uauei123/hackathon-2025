@@ -1,12 +1,67 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Data Usage</title>
-  </head>
-  <body>
-    <h1>Dati Usati</h1>
-    <p id="dataUsed">Caricamento...</p>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecobyte Data Counter</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fb;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        h1 {
+            font-size: 24px;
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+            font-weight: bold;
+            margin-top: 0;
+        }
+        #dataUsed {
+            color: #000;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        .loading {
+            color: #4CAF50;
+            font-weight: normal;
+        }
+        .discover-link {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .discover-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dati Usati</h1>
+        <p id="dataUsed" class="loading">Caricamento...</p>
+        <a href="https://www.example.com" class="discover-link" target="_blank">Scopri di più</a>
+    </div>
 
     <script src="popup.js"></script>
-  </body>
+</body>
 </html>
