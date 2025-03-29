@@ -35,7 +35,7 @@ async function submitTest(req, res) {
 
         // Query per l'inserimento nel database
         const result = await pool.query(
-            "INSERT INTO user_tests (email, streaming_hours, social_hours, emails_sent, gaming_hours, cloud_usage,musc_hours,call_hours, total_co2) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
+            "INSERT INTO user_tests (email, streaming_hours, social_hours, emails_sent, gaming_hours, cloud_usage,music_hours,call_hours, total_co2) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *",
             [
                 answers.email,
                 streamingHours,

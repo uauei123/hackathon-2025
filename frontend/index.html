@@ -272,7 +272,7 @@
         let currentQuestion = 1;
 
         function updateProgress() {
-            const progress = (currentQuestion - 1) / totalQuestions * 100;
+            const progress = (currentQuestion) / totalQuestions * 100;
             document.querySelector('.progress-bar').style.width = progress + '%';
         }
 
@@ -402,7 +402,7 @@
                                 </div>
                             </div>
                             
-                            <button class="btn-custom mt-3" onclick="location.reload()">
+                            <button class="btn-custom mt-3" onclick="window.location.href='../suggest.html'">
                                 Ricomincia il test
                             </button>
                         </div>`;
