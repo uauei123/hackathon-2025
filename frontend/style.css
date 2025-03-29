@@ -5,7 +5,7 @@
     justify-content: center; /* Vertically center content */
     text-align: center; /* Center text */
     color: white; /* Set text color to white */
-    background: url('image.png') no-repeat center center; /* Set background image, centered */
+    background: url('images/background.png') no-repeat center center; /* Set background image, centered */
     background-size: cover; /* Ensure the background image covers the full section */
     height: 100vh; /* Set section height to 100% of the viewport height */
 }
