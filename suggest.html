@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suggerimenti Carbon Footprint</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #1B4D3E, #4CAF50); /* Gradiente verde più scuro da sinistra a destra */
+            font-size: 1.1rem; /* Aumento della dimensione del testo di default */
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Hero Section con il Titolo */
+        .hero {
+            height: 35vh; /* Impostiamo l'altezza della sezione del titolo */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative; /* Necessario per posizionare il logo */
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px; /* Spazio tra il logo e il titolo */
+        }
+
+        /* Logo posizionato a sinistra */
+        .hero .logo {
+            width: 120px; /* Dimensione del logo */
+            height: auto;
+        }
+
+        .title-container h1 {
+            font-size: 3rem; /* Grandezza del titolo */
+            font-weight: 500; /* Peso del font ridotto */
+            margin: 0; /* Rimuove margini extra */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Ombra leggera */
+            text-align: center; /* Centra il testo */
+        }
+
+        /* Sezione di contenuto con flexbox */
+        .content-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px; /* Spazio uniforme */
+            margin-bottom: 40px; /* Spazio tra le sezioni */
+        }
+
+        /* Testo della sezione con effetto blur */
+        .content-text {
+            flex: 1;
+            padding: 20px;
+            font-size: 1.3rem; /* Aumento della grandezza del testo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            backdrop-filter: blur(5px); /* Aggiunge l'effetto blur sullo sfondo */
+            -webkit-backdrop-filter: blur(5px); /* Supporto Safari */
+            color: white; /* Colore del testo bianco */
+            border-radius: 15px; /* Bordo arrotondato per i div con il testo */
+            background: rgba(0, 0, 0, 0.3); /* Aggiunge una leggera trasparenza sullo sfondo del testo */
+            margin: 10px; /* Spazio uniforme intorno al testo */
+        }
+
+        .content-text h3 {
+            backdrop-filter: none; /* Disabilita il blur per il titolo */
+            -webkit-backdrop-filter: none; /* Supporto Safari */
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .content-image {
+            flex: 1;
+            max-width: 500px;
+            margin: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px); /* Aggiunge il blur anche sulle immagini */
+            -webkit-backdrop-filter: blur(5px); /* Supporto Safari */
+        }
+
+        /* Titolo della sezione */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-top: 60px;
+            margin-bottom: 60px;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Responsività per schermi più piccoli */
+        @media (max-width: 768px) {
+            .title-container h1 {
+                font-size: 2.5rem; /* Riduci la dimensione del titolo su schermi piccoli */
+            }
+
+            .content-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .content-text {
+                text-align: left; /* Allinea il testo a sinistra su mobile */
+                padding: 15px;
+            }
+
+            .content-image {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .content-text h3 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .title-container h1 {
+                font-size: 2rem; /* Riduci ulteriormente il titolo */
+            }
+
+            .content-section {
+                padding: 20px 10px;
+                margin-bottom: 20px; /* Riduci lo spazio tra le sezioni */
+            }
+
+            .content-text {
+                font-size: 1rem; /* Riduci la dimensione del testo */
+                padding: 10px;
+            }
+
+            .content-image {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Titolo che è parte dello sfondo -->
+    <section class="hero">
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo" class="logo"> <!-- Logo centrato sopra -->
+        </div>
+        <div class="title-container">
+            <h1>
+                Suggerimenti per Ridurre la Carbon Footprint
+            </h1>
+        </div>
+    </section>
+
+    <!-- Prima Sezione con Testo a Sinistra e Immagine a Destra -->
+    <section class="content-section row">
+        <div class="content-text col-md-6 col-12">
+            <h3>Un motore alternativo</h3>
+            <p>Ecosia è un motore di ricerca che pianta alberi grazie ai ricavi delle ricerche. È ecologico, trasparente e utilizza energie rinnovabili.</p>
+        </div>
+        <div class="content-image col-md-6 col-12">
+            <img src="ecosia.jpg" alt="Immagine di esempio 1" class="img-fluid rounded">
+        </div>
+    </section>
+
+    <!-- Seconda Sezione con Testo a Destra e Immagine a Sinistra -->
+    <section class="content-section">
+        <div class="content-image">
+            <img src="https://placehold.co/500x300" alt="Immagine di esempio 2" class="img-fluid rounded">
+        </div>
+        <div class="content-text">
+            <h3>Scegli Trasporti Sostenibili</h3>
+            <p>Utilizzare i mezzi pubblici, camminare o andare in bicicletta riduce le emissioni dovute al traffico e ai veicoli privati. Prendi in considerazione anche veicoli elettrici.</p>
+        </div>
+    </section>
+
+    <!-- Terza Sezione con Testo a Sinistra e Immagine a Destra -->
+    <section class="content-section">
+        <div class="content-text">
+            <h3>Acquista Prodotti Locali</h3>
+            <p>Scegliere prodotti locali e di stagione aiuta a ridurre le emissioni legate al trasporto di merci a lunga distanza e supporta l'economia locale.</p>
+        </div>
+        <div class="content-image">
+            <img src="https://placehold.co/500x300" alt="Immagine di esempio 3" class="img-fluid rounded">
+        </div>
+    </section>
+
+    <!-- Quarta Sezione con Testo a Destra e Immagine a Sinistra -->
+    <section class="content-section">
+        <div class="content-image">
+            <img src="https://placehold.co/500x300" alt="Immagine di esempio 4" class="img-fluid rounded">
+        </div>
+        <div class="content-text">
+            <h3>Riciclo e Riuso</h3>
+            <p>Ridurre i rifiuti attraverso il riciclo e il riuso è un ottimo modo per diminuire l'impronta ecologica. Acquista prodotti riciclati e riutilizzabili per ridurre la domanda di nuove risorse.</p>
+        </div>
+    </section>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
