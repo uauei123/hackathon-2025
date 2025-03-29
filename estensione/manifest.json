@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "Data Usage Counter",
+  "name": "Ecobyte Data Counter",
   "version": "1.0",
-  "description": "Conta i MB di dati utilizzati da Chrome",
+  "description": "Conta i MB di dati utilizzati per la navigazione web.",
   "permissions": [
     "webRequest",
     "webRequestBlocking",
@@ -17,5 +17,10 @@
   },
   "browser_action": {
     "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
   }
 }
