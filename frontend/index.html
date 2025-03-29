@@ -352,7 +352,7 @@
 
         document.getElementById("carbonForm").addEventListener("submit", async function(event) {
             event.preventDefault();
-
+            
             const data = {
                 email: document.getElementById("email").value,
                 streaming_hours: parseInt(document.getElementById("streaming_hours").value),
@@ -373,11 +373,38 @@
 
                 const result = await response.json();
                 if (response.ok) {
+                    // Hide the form and show results
+                    document.getElementById("carbonForm").style.display = "none";
+                    
                     document.getElementById("result").innerHTML = `
-                        <div class="alert alert-success">
-                            <h4 class="alert-heading mb-3">Risultato dell'Impatto Ambientale</h4>
-                            <p class="mb-2"><strong>CO₂ Totale:</strong> ${result.data.total_co2} kg</p>
-                            <p><strong>Pianeti necessari:</strong> ${result.earthsNeeded}</p>
+                        <div class="result-container text-center">
+                            <h3 class="mb-4">Il tuo impatto digitale</h3>
+                            
+                            <div class="row justify-content-center mb-4">
+                                <div class="col-md-6">
+                                    <div class="glass-card mb-3 p-4">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/1835/1835590.png" 
+                                             alt="CO2" class="mb-3" style="width: 64px;">
+                                        <h4 class="mb-3">Emissioni CO₂</h4>
+                                        <h2 class="display-4 mb-0">${result.data.total_co2} kg</h2>
+                                        <p class="text-muted">all'anno</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="glass-card mb-3 p-4">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/616/616616.png" 
+                                             alt="Planets" class="mb-3" style="width: 64px;">
+                                        <h4 class="mb-3">Pianeti necessari</h4>
+                                        <h2 class="display-4 mb-0">${result.earthsNeeded}</h2>
+                                        <p class="text-muted">se tutti vivessero come te</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button class="btn-custom mt-3" onclick="location.reload()">
+                                Ricomincia il test
+                            </button>
                         </div>`;
                 } else {
                     throw new Error(result.error || "Errore durante il calcolo");
