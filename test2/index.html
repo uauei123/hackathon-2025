@@ -9,7 +9,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-
         body {
             background-image: url("image.png");
             background-size: cover;
@@ -35,6 +34,8 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
+            opacity: 1;
+            transition: opacity 0.5s ease;
         }
 
         .btn-gradient {
@@ -62,18 +63,82 @@
             font-size: 16px;
             opacity: 0.9;
         }
+
+        .fade-out {
+            opacity: 0;
+        }
+
+        .fade-in {
+            opacity: 1;
+        }
+
     </style>
 </head>
 <body>
 
     <section class="glass-card">
-        <h1>Scopri la tua footprint</h1>
-        <p><i>"Dati leggeri, pianeta più verde"</i></p>
-        <button class="btn btn-gradient">Inizia il quiz</button>
+        <h1 id="question-title">Scopri la tua footprint</h1>
+        <p id="question-text"><i>"Dati leggeri, pianeta più verde"</i></p>
+        <button id="next-question-btn" class="btn btn-gradient" href="questionario.html">Inizia il quiz</button>
     </section>
 
     <!-- Bootstrap 5 JS (CDN) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const questions = [
+            { title: "Qual è la tua principale fonte di CO2?", text: "Aerei, auto, energia domestica, altri?" },
+            { title: "Quante persone vivono nella tua casa?", text: "Questo può influire sul consumo energetico." },
+            { title: "Quanto spesso viaggi in aereo?", text: "Un viaggio in aereo genera molta CO2." },
+            { title: "Quanta plastica usi ogni settimana?", text: "La plastica è un grande contributo alle emissioni." },
+            { title: "Hai mai considerato l'energia rinnovabile?", text: "Può ridurre la tua impronta di carbonio." },
+        ];
+
+        let currentQuestionIndex = 0;
+
+        const titleElement = document.getElementById("question-title");
+        const textElement = document.getElementById("question-text");
+        const buttonElement = document.getElementById("next-question-btn");
+
+        function changeQuestion() {
+            if (currentQuestionIndex < questions.length) {
+                // Add fade-out effect
+                titleElement.classList.add("fade-out");
+                textElement.classList.add("fade-out");
+
+                setTimeout(() => {
+                    // Change the question content
+                    titleElement.textContent = questions[currentQuestionIndex].title;
+                    textElement.textContent = questions[currentQuestionIndex].text;
+
+                    // Increment question index
+                    currentQuestionIndex++;
+
+                    // Add fade-in effect
+                    titleElement.classList.remove("fade-out");
+                    textElement.classList.remove("fade-out");
+                    titleElement.classList.add("fade-in");
+                    textElement.classList.add("fade-in");
+                }, 500); // Wait for the fade-out effect to complete (500ms)
+
+                // Disable the button temporarily until the question changes
+                buttonElement.disabled = true;
+
+                // Re-enable the button after the fade-in animation is done
+                setTimeout(() => {
+                    buttonElement.disabled = false;
+                }, 1000); // 1000ms = time for the fade-out + fade-in transition
+            } else {
+                // Quiz finished
+                buttonElement.textContent = "Hai completato il quiz!";
+                buttonElement.disabled = true;
+            }
+        }
+
+        // Event listener for the button
+        buttonElement.addEventListener("click", changeQuestion);
+
+    </script>
 
 </body>
 </html>

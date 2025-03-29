@@ -1,24 +1,68 @@
-/* Migliora leggibilità su schermi piccoli */
-body {
-    font-family: Arial, sans-serif;
+.hero {
+    display: flex; /* Align items and justify content in the center */
+    flex-direction: column; /* Arrange child elements in a vertical column */
+    align-items: center; /* Horizontally center content */
+    justify-content: center; /* Vertically center content */
+    text-align: center; /* Center text */
+    color: white; /* Set text color to white */
+    background: url('image.png') no-repeat center center; /* Set background image, centered */
+    background-size: cover; /* Ensure the background image covers the full section */
+    height: 100vh; /* Set section height to 100% of the viewport height */
 }
 
-/* Hero Section - Regola la dimensione del testo */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 1.8rem;
-    }
-    header p {
-        font-size: 1rem;
-    }
+.lobster-regular {
+    font-family: "Lobster", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
-/* Navbar - Centra il menu su dispositivi piccoli */
-.navbar-nav {
-    text-align: center;
+.glass-card {
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+    border-radius: 15px; /* Rounded corners */
+    padding: 40px; /* Padding around the content */
+    max-width: 1000px; /* Maximum width of the card */
+    text-align: center; /* Center the text */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    backdrop-filter: blur(10px); /* Apply blur to the background behind the card */
+    -webkit-backdrop-filter: blur(10px); /* Safari support for backdrop filter */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Light border with some transparency */
+    opacity: 1; /* Ensure full opacity for visibility */
+    transition: opacity 0.5s ease; /* Smooth transition for opacity changes */
 }
 
-/* Card - Aggiunge spazio tra le card su mobile */
-.card {
-    text-align: center;
+/* Optional: Add hover effect for the glass card */
+.glass-card:hover {
+    opacity: 0.9; /* Slightly decrease opacity on hover */
 }
+
+.btn-gradient {
+    background: linear-gradient(90deg, #3ec08a, #09ee09);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.7s ease; /* Increased transition duration for smoothness */
+    cursor: pointer; /* Change cursor to pointer for better UX */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for modern effect */
+
+    transition: all ease 0.5s;
+    cursor: pointer;
+    background-size:300%;
+    background-position: 0 0;
+    -webkit-appearance: none !important;
+    text-decoration:none
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(90deg, #f5f231, #1eff00); /* Slightly brighter color change */
+    transform: scale(1.1); /* Smooth and subtle scaling effect */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow on hover */
+    color: #fff; /* Ensure text remains white even during hover */
+    border-radius: 25px; /* Slightly reduce border radius on hover for a sleek look */
+}
+
+
+
+
