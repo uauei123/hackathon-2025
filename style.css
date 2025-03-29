@@ -56,6 +56,7 @@
 }
 
 .btn-gradient:hover {
+    background-position: 100% 0;
     background: linear-gradient(90deg, #f5f231, #1eff00); /* Slightly brighter color change */
     transform: scale(1.1); /* Smooth and subtle scaling effect */
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow on hover */
