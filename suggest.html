@@ -15,7 +15,7 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #1B4D3E, #4CAF50); /* Gradiente verde più scuro da sinistra a destra */
+            background: linear-gradient(to right, #83C050, #9CCE71); /* Gradiente verde più scuro da sinistra a destra */
             font-size: 1.1rem; /* Aumento della dimensione del testo di default */
             color: white;
             margin: 0;
@@ -50,7 +50,7 @@
             font-size: 3rem; /* Grandezza del titolo */
             font-weight: 500; /* Peso del font ridotto */
             margin: 0; /* Rimuove margini extra */
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Ombra leggera */
+            
             text-align: center; /* Centra il testo */
         }
 
@@ -153,15 +153,19 @@
                 margin: 10px 0;
             }
         }
+
+        /* Sposta l'immagine nella quinta sezione leggermente a destra */
+        .content-section:nth-child(5) .content-image {
+            margin-left: auto; /* Sposta l'immagine verso destra */
+            margin-right: auto; /* Mantiene l'immagine centrata */
+            display: block; /* Assicura che l'immagine sia trattata come blocco */
+        }
     </style>
 </head>
 <body>
 
     <!-- Titolo che è parte dello sfondo -->
     <section class="hero">
-        <div class="logo-container">
-            <img src="logo.png" alt="Logo" class="logo"> <!-- Logo centrato sopra -->
-        </div>
         <div class="title-container">
             <h1>
                 Suggerimenti per Ridurre la Carbon Footprint
@@ -176,40 +180,57 @@
             <p>Ecosia è un motore di ricerca che pianta alberi grazie ai ricavi delle ricerche. È ecologico, trasparente e utilizza energie rinnovabili.</p>
         </div>
         <div class="content-image col-md-6 col-12">
-            <img src="ecosia.jpg" alt="Immagine di esempio 1" class="img-fluid rounded">
+            <a href="https://www.ecosia.org/?c=it" target="_blank">
+                <img src="ecosia.jpg" alt="Logo Ecosia" class="img-fluid rounded">
+            </a>
         </div>
     </section>
 
     <!-- Seconda Sezione con Testo a Destra e Immagine a Sinistra -->
     <section class="content-section">
         <div class="content-image">
-            <img src="https://placehold.co/500x300" alt="Immagine di esempio 2" class="img-fluid rounded">
+            <a href="https://www.treedom.net/" target="_blank">
+                <img src="treedom.jpg" alt="Logo treedom" class="img-fluid rounded">
+            </a>
         </div>
         <div class="content-text">
-            <h3>Scegli Trasporti Sostenibili</h3>
-            <p>Utilizzare i mezzi pubblici, camminare o andare in bicicletta riduce le emissioni dovute al traffico e ai veicoli privati. Prendi in considerazione anche veicoli elettrici.</p>
+            <h3>Regala un albero</h3>
+            <p>Treedom è una piattaforma che consente di piantare alberi per combattere il cambiamento climatico e supportare le comunità locali. Ogni albero piantato è tracciato online.</p>
         </div>
     </section>
 
     <!-- Terza Sezione con Testo a Sinistra e Immagine a Destra -->
-    <section class="content-section">
-        <div class="content-text">
-            <h3>Acquista Prodotti Locali</h3>
-            <p>Scegliere prodotti locali e di stagione aiuta a ridurre le emissioni legate al trasporto di merci a lunga distanza e supporta l'economia locale.</p>
+    <section class="content-section row">
+        <div class="content-text col-md-6 col-12">
+            <h3>Pollice verde</h3>
+            <p>Se hai un giardino, puoi piantare alberi e piante per compensare le emissioni di CO2. Puoi anche piantare piante in casa per migliorare la qualità dell'aria.</p>
         </div>
-        <div class="content-image">
-            <img src="https://placehold.co/500x300" alt="Immagine di esempio 3" class="img-fluid rounded">
+        <div class="content-image col-md-6 col-12">
+                <img src="pollice.jpg" alt="piantina piantata" class="img-fluid rounded">
         </div>
     </section>
 
     <!-- Quarta Sezione con Testo a Destra e Immagine a Sinistra -->
     <section class="content-section">
         <div class="content-image">
-            <img src="https://placehold.co/500x300" alt="Immagine di esempio 4" class="img-fluid rounded">
+            <img src="cleaner.jpg" alt="Immagine pulizia mail" class="img-fluid rounded">
         </div>
         <div class="content-text">
-            <h3>Riciclo e Riuso</h3>
-            <p>Ridurre i rifiuti attraverso il riciclo e il riuso è un ottimo modo per diminuire l'impronta ecologica. Acquista prodotti riciclati e riutilizzabili per ridurre la domanda di nuove risorse.</p>
+            <h3>Manutenzione periodica</h3>
+            <p>Eseguire opere di pulizia periodica alla casella di posta per eliminare mail di spam e vecchie mail per ridurre il consumo di CO2.</p>
+        </div>
+    </section>
+
+    <!-- Quinta Sezione con Testo a Destra e Immagine a Sinistra -->
+    <section class="content-section">
+        <div class="content-text">
+            <h3>Estensione Ecobyte Datacounter</h3>
+            <p>Scaricare la nostra estensione per il browser che permette di rilevare in automatico il consumo di anidride carbonica quando si naviga in internet.</p>
+        </div>
+        <div class="content-image">
+            <a href="https://example.com/ecobyte-datacounter" target="_blank">
+                <img src="logo.jpg" alt="Immagine estensione Ecobyte Datacounter" class="img-fluid rounded">
+            </a>
         </div>
     </section>
 
