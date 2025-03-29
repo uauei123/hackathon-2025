@@ -1,130 +1,21 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Calcolatore CO₂</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-image: url('https://images.unsplash.com/vector-1739203295425-aad07a496d27?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            min-height: 100vh;
-        }
+    <link rel="stylesheet" href="/frontend/style/questionStyle.css"> <!-- Importa il tuo CSS -->
 
-        .btn-custom {
-            transition: all 0.3s ease-in-out;
-            padding: 10px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 25px;
-            background-image: linear-gradient(to right, #B2FF9E, #C5D86D);
-            color: #fff;
-            border: 2px solid transparent;
-            text-decoration:none
-        }
-
-        .btn-custom:hover {
-            background-image: linear-gradient(to right, #C5D86D, #B2FF9E);
-            border: 2px solid #fff;
-            color: #000;
-        }
-        .btn-custom:focus {
-            outline: none;
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-        }
-
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.65); 
-            backdrop-filter: blur(20px); 
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            color: black;
-            padding: 30px;
-        }
-
-        .question-container {
-            display: none;
-        }
-        .question-container.active {
-            display: block;
-        }
-        .progress {
-            height: 10px;
-        }
-        .answer-btn.selected {
-            background-color: #0d6efd;
-            color: white;
-        }
-        .range-labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 5px;
-            font-size: 1.1rem; 
-            font-weight: 500;
-            color: black;
-            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
-        }
-
-        .range-value {
-            text-align: center;
-            font-size: 1.2rem; 
-            font-weight: 600;
-            margin-top: 10px;
-            color: black;
-            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
-        }
-
-        .form-range::-webkit-slider-thumb {
-            cursor: pointer;
-        }
-
-        .card {
-            background: transparent;
-        }
-
-        h2 {
-            font-size: 2.5rem; 
-            margin-bottom: 1rem;
-            color: black;     
-            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5); 
-        }
-
-        p {
-            font-size: 1.2rem; 
-            color: black;     
-            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5); 
-        }
-
-        .form-label {
-            font-weight: 600;
-            color: black;
-            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
-            font-size: 1.25rem;
-        }
-
-        .form-control {
-            color: black;
-            background: rgba(255, 255, 255, 0.9);
-        }
-
-        .form-control:focus {
-            color: black;
-            background: rgba(255, 255, 255, 0.95);
-        }
-    </style>
 </head>
+
 <body class="bg-light">
-    <div class="container mt-5">
-        <h2 class="text-center">Calcolatore di Impatto Ambientale</h2>
-        <p class="text-center">Scopri il tuo impatto in termini di CO₂ e pianeti necessari</p>
-        
-        <div class="card shadow p-4 glass-card">
+
+    <div class="card shadow p-4 glass-card mt-5 mx-auto" style="max-width: 800px;">
+        <div class="container mt-5">
+            <h2 class="text-center">Calcolatore di Impatto Ambientale</h2>
+            <p class="text-center">Scopri il tuo impatto in termini di CO₂ e pianeti necessari</p>
             <div class="progress mb-4">
                 <div class="progress-bar" role="progressbar" style="width: 0%"></div>
             </div>
@@ -256,9 +147,11 @@
 
 
                 <div class="d-flex justify-content-between mt-4">
-                    <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">Indietro</button>
+                    <button type="button" class="btn btn-secondary" id="prevBtn"
+                        style="display: none;">Indietro</button>
                     <button type="button" class="btn-custom" id="nextBtn">Avanti</button>
-                    <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">Calcola Impatto</button>
+                    <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">Calcola
+                        Impatto</button>
                 </div>
             </form>
 
@@ -267,31 +160,35 @@
     </div>
 
     <script>
-        const totalQuestions = 8;
-        let currentQuestion = 1;
+        const totalQuestions = 8; // Total number of questions in the form
+        let currentQuestion = 1; // Tracks the current question being displayed
 
+        // Updates the progress bar based on the current question
         function updateProgress() {
-            const progress = (currentQuestion) / totalQuestions * 100;
+            const progress = (currentQuestion / totalQuestions) * 100;
             document.querySelector('.progress-bar').style.width = progress + '%';
         }
 
+        // Displays the specified question and updates navigation buttons
         function showQuestion(questionNumber) {
             document.querySelectorAll('.question-container').forEach(container => {
                 container.classList.remove('active');
             });
             document.querySelector(`[data-question="${questionNumber}"]`).classList.add('active');
-            
+
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
             const submitBtn = document.getElementById('submitBtn');
-            
+
+            // Show/hide navigation buttons based on the current question
             prevBtn.style.display = questionNumber === 1 ? 'none' : 'block';
             nextBtn.style.display = questionNumber === totalQuestions ? 'none' : 'block';
             submitBtn.style.display = questionNumber === totalQuestions ? 'block' : 'none';
-            
+
             updateProgress();
         }
 
+        // Event listener for the "Previous" button
         document.getElementById('prevBtn').addEventListener('click', () => {
             if (currentQuestion > 1) {
                 currentQuestion--;
@@ -299,56 +196,48 @@
             }
         });
 
+        // Event listener for the "Next" button
         document.getElementById('nextBtn').addEventListener('click', () => {
             const currentContainer = document.querySelector('.question-container.active');
             const input = currentContainer.querySelector('input');
-            
+
+            // Validate the current input before proceeding
             if (input.checkValidity()) {
                 if (currentQuestion < totalQuestions) {
                     currentQuestion++;
                     showQuestion(currentQuestion);
                 }
             } else {
-                alert('Per favore compila questo campo');
+                alert('Please fill out this field');
             }
         });
 
-        document.querySelectorAll('.answer-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const container = this.closest('.question-container');
-                const hiddenInput = container.querySelector('input[type="hidden"]');
-                
-                container.querySelectorAll('.answer-btn').forEach(btn => {
-                    btn.classList.remove('selected');
-                });
-                
-                this.classList.add('selected');
-                hiddenInput.value = this.dataset.value;
-            });
-        });
-
+        // Updates the displayed value for range inputs dynamically
         document.querySelectorAll('input[type="range"]').forEach(slider => {
-            slider.addEventListener('input', function() {
+            slider.addEventListener('input', function () {
                 const value = this.value;
                 const valueDisplay = this.nextElementSibling;
                 const questionType = this.id;
 
-                switch(questionType) {
+                // Customize the displayed value based on the input type
+                switch (questionType) {
                     case 'emails_sent':
-                        valueDisplay.textContent = value == 50 ? '50+ email' : value + ' email';
+                        valueDisplay.textContent = value == 50 ? '50+ emails' : value + ' emails';
                         break;
                     case 'cloud_usage':
                         valueDisplay.textContent = value == 50 ? '50+ GB' : value + ' GB';
                         break;
                     default:
-                        valueDisplay.textContent = value == 6 ? '6+ ore' : value + ' or' + (value != 1 ? 'e' : 'a');
+                        valueDisplay.textContent = value == 6 ? '6+ hours' : value + ' hour' + (value != 1 ? 's' : '');
                 }
             });
         });
 
-        document.getElementById("carbonForm").addEventListener("submit", async function(event) {
-            event.preventDefault();
-            
+        // Handles form submission and sends data to the server
+        document.getElementById("carbonForm").addEventListener("submit", async function (event) {
+            event.preventDefault(); // Prevents the default form submission behavior
+
+            // Collects form data
             const data = {
                 email: document.getElementById("email").value,
                 streaming_hours: parseInt(document.getElementById("streaming_hours").value),
@@ -361,6 +250,7 @@
             };
 
             try {
+                // Sends a POST request to the server
                 const response = await fetch("http://localhost:3000/api/submit-test", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -369,20 +259,21 @@
 
                 const result = await response.json();
                 if (response.ok) {
+                    // Hides the form and displays the result
                     document.getElementById("carbonForm").style.display = "none";
-                    
+
                     document.getElementById("result").innerHTML = `
                         <div class="result-container text-center">
-                            <h3 class="mb-4">Il tuo impatto digitale</h3>
+                            <h3 class="mb-4">Your Digital Impact</h3>
                             
                             <div class="row justify-content-center mb-4">
                                 <div class="col-md-6">
                                     <div class="glass-card mb-3 p-4">
                                         <img src="https://cdn-icons-png.flaticon.com/512/1835/1835590.png" 
                                              alt="CO2" class="mb-3" style="width: 64px;">
-                                        <h4 class="mb-3">Emissioni CO₂</h4>
+                                        <h4 class="mb-3">CO₂ Emissions</h4>
                                         <h2 class="display-4 mb-0">${result.data.total_co2} kg</h2>
-                                        <p class="text-muted">all'anno</p>
+                                        <p class="text-muted">per year</p>
                                     </div>
                                 </div>
                                 
@@ -390,24 +281,25 @@
                                     <div class="glass-card mb-3 p-4">
                                         <img src="https://cdn-icons-png.flaticon.com/512/616/616616.png" 
                                              alt="Planets" class="mb-3" style="width: 64px;">
-                                        <h4 class="mb-3">Pianeti necessari</h4>
+                                        <h4 class="mb-3">Planets Needed</h4>
                                         <h2 class="display-4 mb-0">${result.earthsNeeded}</h2>
-                                        <p class="text-muted">se tutti vivessero come te</p>
+                                        <p class="text-muted">if everyone lived like you</p>
                                     </div>
                                 </div>
                             </div>
                             
                             <button class="btn-custom mt-3" onclick="window.location.href='../suggestions/'">
-                                Suggerimenti
+                                Suggestions
                             </button>
                         </div>`;
                 } else {
-                    throw new Error(result.error || "Errore durante il calcolo");
+                    throw new Error(result.error || "Error during calculation");
                 }
             } catch (error) {
+                // Displays an error message if the request fails
                 document.getElementById("result").innerHTML = `
                     <div class="alert alert-danger">
-                        <strong>Errore:</strong> ${error.message}
+                        <strong>Error:</strong> ${error.message}
                     </div>`;
             }
         });
@@ -415,4 +307,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
