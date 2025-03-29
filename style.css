@@ -21,4 +21,53 @@ body {
 /* Card - Aggiunge spazio tra le card su mobile */
 .card {
     text-align: center;
+    border-radius: 15px;
+    border: none;
+}
+
+.question {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.question:last-child {
+    border-bottom: none;
+}
+
+.form-check {
+    margin: 10px 0;
+}
+
+.btn-primary {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.card {
+    border-radius: 15px;
+    border: none;
+}
+
+.question {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.form-check {
+    margin: 10px 0;
+}
+
+.btn-primary {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
 }
