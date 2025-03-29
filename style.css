@@ -30,7 +30,6 @@
     transition: opacity 0.5s ease; /* Smooth transition for opacity changes */
 }
 
-<<<<<<< HEAD
 /* Optional: Add hover effect for the glass card */
 .glass-card:hover {
     opacity: 0.9; /* Slightly decrease opacity on hover */
@@ -55,7 +54,7 @@
     color: hsl(0, 0%, 100%);
     transform: scale(1.1); /* Slight scaling */
     border-color: #FFFBFF; /* Add a border color */
-=======
+}
 /* Card - Aggiunge spazio tra le card su mobile */
 .card {
     text-align: center;
@@ -108,5 +107,4 @@
 .btn-primary:hover {
     background-color: #218838;
     border-color: #1e7e34;
->>>>>>> 7e054075165ca95309c7f6212785bc2cc0a94458
 }
