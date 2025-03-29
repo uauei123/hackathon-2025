@@ -1,10 +1,12 @@
 function calculateCarbonFootprint(answers) {
   const co2Factors = {
     streaming: 400, // g CO₂ per ora di streaming HD
-    social: 50,     // g CO₂ per ora di social browsing
-    email: 4,       // g CO₂ per email inviata
-    gaming: 80,     // g CO₂ per ora di gaming online
-    cloud: 20       // g CO₂ per ora di utilizzo di servizi cloud
+    social: 500,     // g CO₂ per ora di social browsing
+    email: 40,       // g CO₂ per email inviata
+    gaming: 800,     // g CO₂ per ora di gaming online
+    cloud: 200,       // g CO₂ per ora di utilizzo di servizi cloud
+    music:  300,
+    call:  500,
   };
 
   // Convertiamo in numeri e assicuriamoci che valori non validi siano 0
@@ -13,6 +15,8 @@ function calculateCarbonFootprint(answers) {
   const emailsSent = parseInt(answers.emails_sent);
   const gamingHours = parseInt(answers.gaming_hours);
   const cloudUsage = parseInt(answers.cloud_usage);
+  const musicHours = parseInt(answers.music_hours); // Aggiunto per il calcolo della musica
+  const callHours = parseInt(answers.call_hours); // Aggiunto per il calcolo delle chiamate
 
   // Calcolo emissioni CO2 settimanali (in grammi)
   const weeklyCO2 =
@@ -20,7 +24,9 @@ function calculateCarbonFootprint(answers) {
       socialHours * co2Factors.social +
       emailsSent * co2Factors.email +
       gamingHours * co2Factors.gaming +
-      cloudUsage * co2Factors.cloud;
+      cloudUsage * co2Factors.cloud+
+      musicHours * co2Factors.music +
+      callHours * co2Factors.call; // Aggiunto per il calcolo delle chiamate
 
   // Convertiamo in kg e calcoliamo le emissioni annuali
   const weeklyCO2Kg = weeklyCO2 / 1000;

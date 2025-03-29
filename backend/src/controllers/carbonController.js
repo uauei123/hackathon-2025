@@ -13,6 +13,9 @@ async function submitTest(req, res) {
         const emailsSent = parseInt(answers.emails_sent);
         const gamingHours = parseInt(answers.gaming_hours);
         const cloudUsage = parseInt(answers.cloud_usage);
+        const musicHours = parseInt(answers.music_hours); // Aggiunto per il calcolo della musica
+        const callHours = parseInt(answers.call_hours); // Aggiunto per il calcolo delle chiamate
+
 
         // Calcola la CO2, assicurandoti che il valore sia un numero valido
         const { totalCO2, earthsNeeded } = calculateCarbonFootprint({
@@ -21,6 +24,8 @@ async function submitTest(req, res) {
             emails_sent: emailsSent,
             gaming_hours: gamingHours,
             cloud_usage: cloudUsage,
+            music_hours: musicHours,
+            call_hours: callHours,
         });
 
         if (isNaN(totalCO2)) {
@@ -30,7 +35,7 @@ async function submitTest(req, res) {
 
         // Query per l'inserimento nel database
         const result = await pool.query(
-            "INSERT INTO user_tests (email, streaming_hours, social_hours, emails_sent, gaming_hours, cloud_usage, total_co2) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
+            "INSERT INTO user_tests (email, streaming_hours, social_hours, emails_sent, gaming_hours, cloud_usage,musc_hours,call_hours, total_co2) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
             [
                 answers.email,
                 streamingHours,
@@ -38,6 +43,9 @@ async function submitTest(req, res) {
                 emailsSent,
                 gamingHours,
                 cloudUsage,
+                // Aggiungi i nuovi campi qui se necessario
+                musicHours,
+                callHours,
                 totalCO2,
             ]
         );

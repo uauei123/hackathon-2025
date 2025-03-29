@@ -174,7 +174,24 @@
 
                 <div class="question-container" data-question="4">
                     <div class="mb-3">
-                        <label class="form-label">Quante email invii al giorno?</label>
+                        <label class="form-label">Quanto tempo trascorri ascoltando musica in streaming?</label>
+                        <input type="range" class="form-range" min="0" max="6" step="1" id="music_hours" required>
+                        <div class="range-value">0 ore</div>
+                        <div class="range-labels">
+                            <span>0</span>
+                            <span>1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>6+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-container" data-question="5">
+                    <div class="mb-3">
+                        <label class="form-label">Quante email invii e ricevi al giorno?</label>
                         <input type="range" class="form-range" min="0" max="50" step="10" id="emails_sent" required>
                         <div class="range-value">0 email</div>
                         <div class="range-labels">
@@ -188,9 +205,9 @@
                     </div>
                 </div>
 
-                <div class="question-container" data-question="5">
+                <div class="question-container" data-question="6">
                     <div class="mb-3">
-                        <label class="form-label">Quante ore giochi ai videogiochi?</label>
+                        <label class="form-label">Quante ore giochi ai videogiochi online?</label>
                         <input type="range" class="form-range" min="0" max="6" step="1" id="gaming_hours" required>
                         <div class="range-value">0 ore</div>
                         <div class="range-labels">
@@ -205,7 +222,7 @@
                     </div>
                 </div>
 
-                <div class="question-container" data-question="6">
+                <div class="question-container" data-question="7">
                     <div class="mb-3">
                         <label class="form-label">Quanto spazio cloud utilizzi? (GB)</label>
                         <input type="range" class="form-range" min="0" max="50" step="10" id="cloud_usage" required>
@@ -221,6 +238,24 @@
                     </div>
                 </div>
 
+                <div class="question-container" data-question="8">
+                    <div class="mb-3">
+                        <label class="form-label">Quante ore passi in videochiamata?</label>
+                        <input type="range" class="form-range" min="0" max="6" step="1" id="call_hours" required>
+                        <div class="range-value">0 ore</div>
+                        <div class="range-labels">
+                            <span>0</span>
+                            <span>1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>6+</span>
+                        </div>
+                    </div>
+                </div>
+
+
                 <div class="d-flex justify-content-between mt-4">
                     <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">Indietro</button>
                     <button type="button" class="btn-custom" id="nextBtn">Avanti</button>
@@ -233,7 +268,7 @@
     </div>
 
     <script>
-        const totalQuestions = 6;
+        const totalQuestions = 8;
         let currentQuestion = 1;
 
         function updateProgress() {
@@ -322,9 +357,11 @@
                 email: document.getElementById("email").value,
                 streaming_hours: parseInt(document.getElementById("streaming_hours").value),
                 social_hours: parseInt(document.getElementById("social_hours").value),
+                music_hours: parseInt(document.getElementById("music_hours").value),
                 emails_sent: parseInt(document.getElementById("emails_sent").value),
                 gaming_hours: parseInt(document.getElementById("gaming_hours").value),
-                cloud_usage: parseInt(document.getElementById("cloud_usage").value)
+                cloud_usage: parseInt(document.getElementById("cloud_usage").value),
+                call_hours: parseInt(document.getElementById("call_hours").value)
             };
 
             try {
@@ -338,14 +375,18 @@
                 if (response.ok) {
                     document.getElementById("result").innerHTML = `
                         <div class="alert alert-success">
-                            <strong>CO₂ Totale:</strong> ${result.data.total_co2} kg<br>
-                            <strong>Pianeti necessari:</strong> ${result.earthsNeeded}
+                            <h4 class="alert-heading mb-3">Risultato dell'Impatto Ambientale</h4>
+                            <p class="mb-2"><strong>CO₂ Totale:</strong> ${result.data.total_co2} kg</p>
+                            <p><strong>Pianeti necessari:</strong> ${result.earthsNeeded}</p>
                         </div>`;
                 } else {
-                    throw new Error(result.error || "Errore sconosciuto");
+                    throw new Error(result.error || "Errore durante il calcolo");
                 }
             } catch (error) {
-                document.getElementById("result").innerHTML = `<div class="alert alert-danger">${error.message}</div>`;
+                document.getElementById("result").innerHTML = `
+                    <div class="alert alert-danger">
+                        <strong>Errore:</strong> ${error.message}
+                    </div>`;
             }
         });
     </script>
