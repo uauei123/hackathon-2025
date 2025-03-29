@@ -11,14 +11,14 @@ const carbonRoutes = require("./routes/carbonRoutes");
 app.use(cors());
 app.use(bodyParser.json());
 
-// Rotta base di test
+// base route
 app.get("/", (req, res) => {
   res.send("Backend funzionante!");
 });
 
 app.use("/api", carbonRoutes);
 
-// Avvio del server
+// start server
 app.listen(PORT, () => {
   console.log(`Server in ascolto su http://localhost:${PORT}`);
 });

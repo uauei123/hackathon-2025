@@ -5,19 +5,18 @@ async function submitTest(req, res) {
     try {
         const answers = req.body;
 
-        console.log("Dati ricevuti:", answers); // DEBUG: Controlla i dati ricevuti
+        console.log("Received data:", answers); // DEBUG: Check the received data
 
-        // Converti i valori in numeri e cast a int per i campi necessari
+        // Convert values to numbers and cast to int for necessary fields
         const streamingHours = parseInt(answers.streaming_hours);
         const socialHours = parseInt(answers.social_hours);
         const emailsSent = parseInt(answers.emails_sent);
         const gamingHours = parseInt(answers.gaming_hours);
         const cloudUsage = parseInt(answers.cloud_usage);
-        const musicHours = parseInt(answers.music_hours); // Aggiunto per il calcolo della musica
-        const callHours = parseInt(answers.call_hours); // Aggiunto per il calcolo delle chiamate
+        const musicHours = parseInt(answers.music_hours); // Added for music calculation
+        const callHours = parseInt(answers.call_hours); // Added for call calculation
 
-
-        // Calcola la CO2, assicurandoti che il valore sia un numero valido
+        // Calculate CO2, ensuring that the value is a valid number
         const { totalCO2, earthsNeeded } = calculateCarbonFootprint({
             streaming_hours: streamingHours,
             social_hours: socialHours,
@@ -28,14 +27,15 @@ async function submitTest(req, res) {
             call_hours: callHours,
         });
 
+        // Check if totalCO2 is a valid number, and return an error if not
         if (isNaN(totalCO2)) {
             console.log(totalCO2);
-            return res.status(400).json({ error: "Errore nel calcolo della CO2: valore NaN" });
+            return res.status(400).json({ error: "CO2 calculation error: NaN value" });
         }
 
-        // Query per l'inserimento nel database
+        // Query to insert data into the database
         const result = await pool.query(
-            "INSERT INTO user_tests (email, streaming_hours, social_hours, emails_sent, gaming_hours, cloud_usage,music_hours,call_hours, total_co2) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *",
+            "INSERT INTO user_tests (email, streaming_hours, social_hours, emails_sent, gaming_hours, cloud_usage, music_hours, call_hours, total_co2) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *",
             [
                 answers.email,
                 streamingHours,
@@ -43,18 +43,18 @@ async function submitTest(req, res) {
                 emailsSent,
                 gamingHours,
                 cloudUsage,
-                // Aggiungi i nuovi campi qui se necessario
+                // Add new fields here if needed
                 musicHours,
                 callHours,
                 totalCO2,
             ]
         );
 
-        res.json({ message: "Test salvato!", data: result.rows[0], earthsNeeded});
+        res.json({ message: "Test saved!", data: result.rows[0], earthsNeeded });
     } catch (error) {
-        console.error("Errore nel server:", error);
-        console.error("Dati ricevuti con errore:", req.body);
-        res.status(500).json({ error: "Errore nel salvataggio" });
+        console.error("Server error:", error);
+        console.error("Received erroneous data:", req.body);
+        res.status(500).json({ error: "Error saving data" });
     }
 }
 
