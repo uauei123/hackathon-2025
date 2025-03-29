@@ -1,22 +1,21 @@
 {
-    "manifest_version": 3,
-    "name": "ecobyte data counter",
-    "version": "1.0",
-    "description": "Conta i dati usati dal tuo computer",
-    "permissions": [
-      "webRequest",
-      "webRequestBlocking",
-      "storage"
-    ],
-    "background": {
-      "service_worker": "background.js"
-    },
-    "action": {
-      "default_popup": "popup.html"
-    },
-    "host_permissions": [
-      "http://*/*",
-      "https://*/*"
-    ]
+  "manifest_version": 2,
+  "name": "Data Usage Counter",
+  "version": "1.0",
+  "description": "Conta i MB di dati utilizzati da Chrome",
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "storage",
+    "tabs",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_popup": "popup.html"
   }
-  
+}
