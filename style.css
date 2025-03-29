@@ -30,6 +30,7 @@
     transition: opacity 0.5s ease; /* Smooth transition for opacity changes */
 }
 
+<<<<<<< HEAD
 /* Optional: Add hover effect for the glass card */
 .glass-card:hover {
     opacity: 0.9; /* Slightly decrease opacity on hover */
@@ -54,4 +55,58 @@
     color: hsl(0, 0%, 100%);
     transform: scale(1.1); /* Slight scaling */
     border-color: #FFFBFF; /* Add a border color */
+=======
+/* Card - Aggiunge spazio tra le card su mobile */
+.card {
+    text-align: center;
+    border-radius: 15px;
+    border: none;
+}
+
+.question {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.question:last-child {
+    border-bottom: none;
+}
+
+.form-check {
+    margin: 10px 0;
+}
+
+.btn-primary {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.card {
+    border-radius: 15px;
+    border: none;
+}
+
+.question {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.form-check {
+    margin: 10px 0;
+}
+
+.btn-primary {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+>>>>>>> 7e054075165ca95309c7f6212785bc2cc0a94458
 }
